@@ -1,0 +1,25 @@
+package spike.drools.rules;
+
+import spike.drools.model.Compra;
+import spike.drools.model.Item;
+
+
+// Promociones no acumulables
+
+// Compras por mas de 200.000 tienen 15% de descuento 
+rule "sum of 200"
+	salience 20
+	when 
+		compra : Compra( total() > 200000 );
+	then
+		compra.setPorcentajeDescuento(15);
+end
+
+// Compras con 5 productos o mas tiene 5% de descuento
+//rule "count of 5"
+//	salience 10
+//	when 
+//		compra : Compra( detalle.size() > 5 );
+//	then
+//		compra.setPorcentajeDescuento(5);
+//end
